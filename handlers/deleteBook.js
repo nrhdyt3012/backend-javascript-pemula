@@ -1,14 +1,14 @@
 const deleteBookByIdHandler = (request, h) => {
-    const books = require('../books'); 
-        // pastikan books array diakses
-        // const { id } = request.params; // Menggunakan destructuring untuk mendapatkan id dari params
-        // const index = books.findIndex((book) => book.id === id); // Mencari index buku berdasarkan id
+  const books = require('../books');
+  // pastikan books array diakses
+  // const { id } = request.params; // Menggunakan destructuring untuk mendapatkan id dari params
+  // const index = books.findIndex((book) => book.id === id); // Mencari index buku berdasarkan id
 
-        // Menggunakan destructuring untuk mendapatkan id dari params
-      const { bookId } = request.params;
-        const index = books.findIndex((book) => book.id === bookId);
+  // Menggunakan destructuring untuk mendapatkan id dari params
+  const { bookId } = request.params;
+  const index = books.findIndex((book) => book.id === bookId);
 
-        if (index !== -1) {
+  if (index !== -1) {
     books.splice(index, 1);
     const response = h.response({
       status: 'success',

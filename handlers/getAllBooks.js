@@ -1,7 +1,7 @@
 const books = require('../books'); // pastikan books array diakses
 
 const getAllBooksHandler = (request, h) => {
-    const { name, reading, finished } = request.query;
+  const { name, reading, finished } = request.query;
 
   const getAllBooksFiltered = books.map((book) => ({
     id: book.id,
@@ -9,7 +9,7 @@ const getAllBooksHandler = (request, h) => {
     publisher: book.publisher,
   }));
 
-   if (name) {
+  if (name) {
     const filteredBooksName = books
       .filter((book) => {
         // kalau ada query name
