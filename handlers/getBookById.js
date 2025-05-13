@@ -1,23 +1,22 @@
+const books = require('../books');
+
 const getBookByIdHandler = (request, h) => {
-    const { id } = request.params;
-    const book = books.filter((n) => n.id === id)[0];
+  const { bookId } = request.params;
+  const book = books.find((b) => b.id === bookId); // ✅ gunakan find, bukan filter
 
-
-if (book !== undefined) {
-    return {
+  if (book != null) {
+    return h.response({
       status: 'success',
       data: {
         book,
       },
-    };
+    }).code(200); // ✅ pastikan kembalikan response dengan status code 200
   }
- 
-  const response = h.response({
+
+  return h.response({
     status: 'fail',
     message: 'Buku tidak ditemukan',
-  });
-  response.code(404);
-  return response;
+  }).code(404);
 };
 
 module.exports = {
